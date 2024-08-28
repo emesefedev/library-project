@@ -1,4 +1,128 @@
-body {
+:root {
+    --min-book-width: 200px;
+    --max-book-width: 350px;
+
+    --brown: rgb(181, 127, 80);
+    --dark-green: rgb(75, 84, 59);
+    --green: rgb(142, 208, 129);
+    --light-green: rgb(220, 226, 170);
+    --blue: rgb(180, 210, 186);
+}
+
+* {
     margin: 0;
     font-family: "Roboto", sans-serif;
+}
+
+button {
+    background-color: transparent;
+    color: var(--blue);
+    border: 1px solid var(--blue);
+    border-radius: 5px;
+    height: 1.75em;
+
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    position: relative;
+    width: 1em;
+    height: 1em;
+    border: 1px solid var(--light-green);
+    border-radius: 5px;
+    color: var(--light-green);
+}
+
+input[type="checkbox"]::before {
+    content: "✔";
+    position: absolute;
+    font-size: 1em;
+    right: -1px;
+    top: -0.3em;
+    visibility: hidden;
+}
+  
+input[type="checkbox"]:checked::before {
+    visibility: visible;
+}
+
+/* BACKGROUND */
+
+.bg-blue {
+    background-color: var(--blue);
+}
+
+.bg-brown {
+    background-color: var(--brown);
+}
+
+/* GRID */
+
+.library-grid {
+    display: grid;
+    overflow: auto;
+    grid-template-columns: repeat(auto-fill, clamp(var(--min-book-width), 30%, var(--max-book-width)));
+    grid-auto-rows: 1fr;
+}
+  
+.book-card {
+    background-color: var(--dark-green);
+    color: var(--light-green);
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5em;
+
+    padding: 10px;
+}
+
+.card-title {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.card-author {
+    font-size: 1.1em;
+}
+
+.card-pages {
+    font-weight: 300;
+}
+
+/* FLEX */
+
+.flex {
+    display: flex;
+}
+
+.align-center {
+    align-items: center;
+}
+
+/* GAP */
+
+.gap-10 {
+    gap: 10px;
+}
+
+/* PADDING */
+
+.p-10 {
+    padding: 10px;
+}
+
+.p-20 {
+    padding: 20px;
+}
+
+/* WIDHT */
+.window-width {
+    width: 100vw;
+}
+
+/* HEIGHT */
+.h-500 {
+    height: 500px;
 }

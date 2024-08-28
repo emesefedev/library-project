@@ -6,7 +6,20 @@
         <link rel="stylesheet" href="style.css">
         <script src="library.js"></script>
     </head>
-    <body>
+    <body class="p-20 bg-blue">
         <h1>Library</h1>
+        
+        <div class="library-grid gap-10 bg-brown p-10">
+            <div class="book-card">
+              <p class="card-title">Title</p>
+              <p class="card-author">Author</p>
+              <p class="card-pages">Pages</p>
+              <div class="flex align-center gap-10">
+                <label for="read">Read</label>
+                <input type="checkbox" id="read" name="read"> 
+              </div>
+              <button>Delete Book</button>
+            </div>
+        </div>
     </body>
 </html>
