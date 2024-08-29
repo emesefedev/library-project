@@ -1,17 +1,26 @@
-const books = [];
+const books = {};
+let id = 1;
 
 function Book(title, author, pages, read) {
   this.title = title
   this.author = author
   this.pages = pages
   this.read = read
+
+  this.id = id++
 }
 
 function addBookToLibrary(newBook) {
-  books.push(newBook)
+  books[newBook.id] = newBook
 }
 
-function displayBook(book, idx) {
+function deleteBookFromLibrary(bookId) {
+  delete books[bookId]
+
+  updateLibrary()
+}
+
+function displayBook(book) {
   const bookCard = document.createElement("div")
   bookCard.classList.add("book-card")
 
@@ -19,9 +28,9 @@ function displayBook(book, idx) {
   setCardAuthor(bookCard, book)
   setCardPages(bookCard, book)
 
-  setReadToggle(bookCard, book, idx)
+  setReadToggle(bookCard, book)
   
-  setDeleteBookButton(bookCard)
+  setDeleteBookButton(bookCard, book)
 
   library.appendChild(bookCard);
 }
@@ -47,35 +56,54 @@ function setCardPages(bookCard, book) {
   bookCard.appendChild(cardPages);
 }
 
-function setReadToggle(bookCard, book, idx) {
+function setReadToggle(bookCard, book) {
   const readToggle = document.createElement("div")
   readToggle.classList.add("flex", "align-center", "gap-10")
 
   const readLabel = document.createElement("label")
-  readLabel.htmlFor = `read-${idx}`
+  readLabel.htmlFor = `read-${book.id}`
   readLabel.textContent = "Read"
   readToggle.appendChild(readLabel);
 
   const readInput = document.createElement("input")
   readInput.type = "checkbox"
   readInput.checked = book.read
-  readInput.id = `read-${idx}`
-  readInput.name = `read-${idx}`
+  readInput.id = `read-${book.id}`
+  readInput.name = `read-${book.id}`
   readToggle.appendChild(readInput);
 
   bookCard.appendChild(readToggle);
 }
 
-function setDeleteBookButton(bookCard) {
+function setDeleteBookButton(bookCard, book) {
   const deleteBookButton = document.createElement("button")
   deleteBookButton.classList.add("card-button")
   deleteBookButton.textContent = "Delete Book"
   bookCard.appendChild(deleteBookButton);
+
+  deleteBookButton.addEventListener("click", () => {
+    deleteBookFromLibrary(book.id)
+  })
+}
+
+function cleanLibrary() {
+  while (library.firstChild) {
+    library.removeChild(library.lastChild);
+  }
 }
 
 function updateLibrary() {
-  for (let i = 0; i < books.length; i++) {
-    displayBook(books[i], i)
+  cleanLibrary()
+
+  for (const [id, book] of Object.entries(books)) {
+    displayBook(book)
+  }
+
+  if (library.firstChild == null) {
+    const noBooksText = document.createElement("p")
+    noBooksText.classList.add("text-dark-green")
+    noBooksText.textContent = "No books in library"
+    library.appendChild(noBooksText);
   }
 }
 

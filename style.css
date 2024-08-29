@@ -43,6 +43,12 @@ input[type="checkbox"]:checked::before {
     visibility: visible;
 }
 
+/* TEXT */
+
+.text-dark-green {
+    color: var(--dark-green);
+}
+
 /* BACKGROUND */
 
 .bg-blue {
