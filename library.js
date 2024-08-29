@@ -108,6 +108,15 @@ function updateLibrary() {
 }
 
 window.addEventListener("load", () => {
+  const library = document.querySelector("library")
+  const newBookButton = document.getElementById("new-book-button");
+  const newBookModal = document.getElementById("new-book-modal");
+
+  newBookButton.addEventListener("click", () => {
+    newBookModal.showModal();
+  });
+
+
   book1 = new Book("Los siete maridos de Evelyn Hugo", "Taylor Jenkins Reid", 384, true)
   book2 = new Book("Entre silencios", "Camila Silva", 276, true)
   book3 = new Book("Running Close to the Wind", "Alexandra Rowland", 448, false)
@@ -116,7 +125,7 @@ window.addEventListener("load", () => {
   addBookToLibrary(book2)
   addBookToLibrary(book3)
 
-  const library = document.querySelector("#library")
+  
   updateLibrary()
   
 })

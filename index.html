@@ -9,8 +9,23 @@
     <body class="p-20 bg-blue">
         <div class="flex justify-space-between align-center">
             <h1>Library</h1>
-            <button class="new-book-button">New book</button>
+            <button id="new-book-button" class="new-book-button">New book</button>
         </div>
+
+        <dialog id="new-book-modal">
+            <form>
+                <div>
+                    <label>
+                    Favorite animal:
+                    <input type="text">
+                    </label>
+                </div>
+                <div>
+                    <button value="cancel" formmethod="dialog">Cancel</button>
+                    <button id="confirmBtn" value="default">Confirm</button>
+                </div>
+            </form>
+          </dialog>
         
         <div id="library" class="library-grid gap-10 bg-brown p-10 mtop-8"> 
         </div>
