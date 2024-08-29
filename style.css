@@ -14,13 +14,10 @@
     font-family: "Roboto", sans-serif;
 }
 
-button {
-    background-color: transparent;
-    color: var(--blue);
-    border: 1px solid var(--blue);
-    border-radius: 5px;
-    height: 1.75em;
-
+h1 {
+    color: var(--dark-green);
+    font-size: 3em;
+    margin-bottom: 8px;
 }
 
 input[type="checkbox"] {
@@ -46,6 +43,12 @@ input[type="checkbox"]:checked::before {
     visibility: visible;
 }
 
+/* TEXT */
+
+.text-dark-green {
+    color: var(--dark-green);
+}
+
 /* BACKGROUND */
 
 .bg-blue {
@@ -63,6 +66,8 @@ input[type="checkbox"]:checked::before {
     overflow: auto;
     grid-template-columns: repeat(auto-fill, clamp(var(--min-book-width), 30%, var(--max-book-width)));
     grid-auto-rows: 1fr;
+
+    border-radius: 10px;
 }
   
 .book-card {
@@ -72,7 +77,6 @@ input[type="checkbox"]:checked::before {
 
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 0.5em;
 
     padding: 10px;
@@ -89,6 +93,21 @@ input[type="checkbox"]:checked::before {
 
 .card-pages {
     font-weight: 300;
+}
+
+.card-button {
+    background-color: transparent;
+    color: var(--blue);
+    border: 1px solid var(--blue);
+    border-radius: 5px;
+    height: 1.75em;
+    align-self: end;
+    margin-top: auto;
+}
+
+.card-button:hover {
+    color: var(--brown);
+    border: 1px solid var(--brown);
 }
 
 /* FLEX */
