@@ -14,15 +14,6 @@
     font-family: "Roboto", sans-serif;
 }
 
-button {
-    background-color: transparent;
-    color: var(--blue);
-    border: 1px solid var(--blue);
-    border-radius: 5px;
-    height: 1.75em;
-
-}
-
 input[type="checkbox"] {
     appearance: none;
     position: relative;
@@ -72,7 +63,6 @@ input[type="checkbox"]:checked::before {
 
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 0.5em;
 
     padding: 10px;
@@ -89,6 +79,16 @@ input[type="checkbox"]:checked::before {
 
 .card-pages {
     font-weight: 300;
+}
+
+.card-button {
+    background-color: transparent;
+    color: var(--blue);
+    border: 1px solid var(--blue);
+    border-radius: 5px;
+    height: 1.75em;
+    align-self: end;
+    margin-top: auto;
 }
 
 /* FLEX */
