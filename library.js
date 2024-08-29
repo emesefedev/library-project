@@ -14,7 +14,8 @@ function addBookToLibrary(newBook) {
 window.addEventListener("load", () => {
   console.log("load")
 
-  book1 = new Book("El nombre del viento", "El que no escribe ni aunque lo amenacen", 300, false)
+  book1 = new Book("El nombre del viento", "El que no escribe ni aunque lo amenacen", 300, true)
+  
   addBookToLibrary(book1)
 
 
@@ -49,6 +50,7 @@ window.addEventListener("load", () => {
 
   const readInput = document.createElement("input")
   readInput.type = "checkbox"
+  readInput.checked = book1.read
   readInput.id = `read-1`
   readInput.name = `read-1`
   readToggle.appendChild(readInput);

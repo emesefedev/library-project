@@ -14,6 +14,12 @@
     font-family: "Roboto", sans-serif;
 }
 
+h1 {
+    color: var(--dark-green);
+    font-size: 3em;
+    margin-bottom: 8px;
+}
+
 input[type="checkbox"] {
     appearance: none;
     position: relative;
@@ -54,6 +60,8 @@ input[type="checkbox"]:checked::before {
     overflow: auto;
     grid-template-columns: repeat(auto-fill, clamp(var(--min-book-width), 30%, var(--max-book-width)));
     grid-auto-rows: 1fr;
+
+    border-radius: 10px;
 }
   
 .book-card {
@@ -89,6 +97,11 @@ input[type="checkbox"]:checked::before {
     height: 1.75em;
     align-self: end;
     margin-top: auto;
+}
+
+.card-button:hover {
+    color: var(--brown);
+    border: 1px solid var(--brown);
 }
 
 /* FLEX */
