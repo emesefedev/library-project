@@ -17,7 +17,6 @@
 h1 {
     color: var(--dark-green);
     font-size: 3em;
-    margin-bottom: 8px;
 }
 
 input[type="checkbox"] {
@@ -32,6 +31,7 @@ input[type="checkbox"] {
 
 input[type="checkbox"]::before {
     content: "✔";
+    color: var(--green);
     position: absolute;
     font-size: 1em;
     right: -1px;
@@ -69,6 +69,8 @@ input[type="checkbox"]:checked::before {
 
     border-radius: 10px;
 }
+
+/* BOOK CARD */
   
 .book-card {
     background-color: var(--dark-green);
@@ -110,6 +112,22 @@ input[type="checkbox"]:checked::before {
     border: 1px solid var(--brown);
 }
 
+/* NEW BOOK */
+
+.new-book-button {
+    background-color: transparent;
+    color: var(--dark-green);
+    border: 1px solid var(--dark-green);
+    border-radius: 5px;
+    height: 1.75em;
+    align-self: end;
+}
+
+.new-book-button:hover {
+    color: var(--brown);
+    border: 1px solid var(--brown);
+}
+
 /* FLEX */
 
 .flex {
@@ -118,6 +136,10 @@ input[type="checkbox"]:checked::before {
 
 .align-center {
     align-items: center;
+}
+
+.justify-space-between {
+    justify-content: space-between;
 }
 
 /* GAP */
@@ -136,12 +158,13 @@ input[type="checkbox"]:checked::before {
     padding: 20px;
 }
 
+/* MARGIN */
+
+.mtop-8 {
+    margin-top: 8px;
+}
+
 /* WIDHT */
 .window-width {
     width: 100vw;
-}
-
-/* HEIGHT */
-.h-500 {
-    height: 500px;
 }
