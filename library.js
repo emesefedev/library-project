@@ -1,21 +1,39 @@
 const books = {};
+const _books = new Map()
 let id = 1;
 
-function Book(title, author, pages, read) {
-  this.title = title
-  this.author = author
-  this.pages = pages
-  this.read = read
+const library = () => document.getElementById("library")
+const newBookButton = () => document.getElementById("new-book-button")
+const newBookModal = () => document.getElementById("new-book-modal")
 
-  this.id = id
-  id++
+const newBookForm = () => document.getElementById("new-book-form")
+
+const addNewBookButton = () => document.getElementById("add-new-book-button")
+const cancelButton = () => document.getElementById("cancel-button")
+
+const titleInput = () => document.getElementById("title-input")
+const authorInput = () => document.getElementById("author-input")
+const pagesInput = () => document.getElementById("pages-input")
+const readInput = () => document.getElementById("read-input")
+
+class Book {
+  constructor (title, author, pages, read = false)  {
+    this.title = title
+    this.author = author
+    this.pages = pages
+    this.read = read
+
+    this.id = id++
+  }
 }
 
-function addNewBookFromForm(titleInput, authorInput, pagesInput, readInput) {
-  const title = titleInput.value
-  const author = authorInput.value
-  const pages = pagesInput.value
-  const read = readInput.checked
+function addNewBookFromForm() {
+
+  // TODO: gestionar amb formData i onSubmit event for <form>
+  const title = titleInput().value 
+  const author = authorInput().value
+  const pages = pagesInput().valueAsNumber
+  const read = readInput().checked
 
   const newBook = new Book(title, author, pages, read)
   addBookToLibrary(newBook)
@@ -28,17 +46,20 @@ function clearForm(form) {
 
 function addBookToLibrary(newBook) {
   books[newBook.id] = newBook
+  //TODO: fer que funcioni _books.set(newBook.id, newBook)
 
-  updateLibrary()
+  rerenderLibrary()
 }
 
 function deleteBookFromLibrary(bookId) {
   delete books[bookId]
+  //TODO: Map api
 
-  updateLibrary()
+
+  rerenderLibrary()
 }
 
-function displayBook(book) {
+function renderBook(book) {
   const bookCard = document.createElement("div")
   bookCard.classList.add("book-card")
 
@@ -50,7 +71,7 @@ function displayBook(book) {
   
   setDeleteBookButton(bookCard, book)
 
-  library.appendChild(bookCard);
+  library().appendChild(bookCard);
 }
 
 function setCardTitle(bookCard, book) {
@@ -105,55 +126,43 @@ function setDeleteBookButton(bookCard, book) {
 }
 
 function cleanLibrary() {
-  while (library.firstChild) {
-    library.removeChild(library.lastChild);
+  while (library().firstChild) {
+    library().removeChild(library().lastChild);
   }
 }
 
-function updateLibrary() {
+function rerenderLibrary() {
   cleanLibrary()
 
   for (const [id, book] of Object.entries(books)) {
-    displayBook(book)
+    renderBook(book)
   }
 
-  if (library.firstChild == null) {
+  if (library().firstChild == null) {
     const noBooksText = document.createElement("p")
     noBooksText.classList.add("text-dark-green")
     noBooksText.textContent = "No books in library"
-    library.appendChild(noBooksText);
+    library().appendChild(noBooksText);
   }
 }
 
+
+
 window.addEventListener("load", () => {
-  const library = document.getElementById("library")
-  const newBookButton = document.getElementById("new-book-button")
-  const newBookModal = document.getElementById("new-book-modal")
 
-  const newBookForm = document.getElementById("new-book-form")
-
-  const addNewBookButton = document.getElementById("add-new-book-button")
-  const cancelButton = document.getElementById("cancel-button")
-
-  const titleInput = document.getElementById("title-input")
-  const authorInput = document.getElementById("author-input")
-  const pagesInput = document.getElementById("pages-input")
-  const readInput = document.getElementById("read-input")
-
-  newBookButton.addEventListener("click", () => {
-    clearForm(newBookForm)
-    newBookModal.showModal()
+  newBookButton().addEventListener("click", () => {
+    clearForm(newBookForm())
+    newBookModal().showModal()
   })
 
-  addNewBookButton.addEventListener("click", (event) => {
+  addNewBookButton().addEventListener("click", (event) => {
     event.preventDefault()
-    newBookModal.close()
-    addNewBookFromForm(titleInput, authorInput, pagesInput, readInput)
+    newBookModal().close()
+    addNewBookFromForm()
   });
 
-  cancelButton.addEventListener("click", (event) => {
-    event.preventDefault()
-    newBookModal.close()
+  cancelButton().addEventListener("click", (event) => {
+    newBookModal().close()
   })
 
 
