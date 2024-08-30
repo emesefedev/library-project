@@ -22,6 +22,10 @@ function addNewBookFromForm(titleInput, authorInput, pagesInput, readInput) {
   console.log(books)
 }
 
+function clearForm(form) {
+  form.reset()
+}
+
 function addBookToLibrary(newBook) {
   books[newBook.id] = newBook
 
@@ -126,6 +130,8 @@ window.addEventListener("load", () => {
   const newBookButton = document.getElementById("new-book-button")
   const newBookModal = document.getElementById("new-book-modal")
 
+  const newBookForm = document.getElementById("new-book-form")
+
   const addNewBookButton = document.getElementById("add-new-book-button")
   const cancelButton = document.getElementById("cancel-button")
 
@@ -135,6 +141,7 @@ window.addEventListener("load", () => {
   const readInput = document.getElementById("read-input")
 
   newBookButton.addEventListener("click", () => {
+    clearForm(newBookForm)
     newBookModal.showModal()
   })
 
