@@ -7,10 +7,62 @@
         <script src="library.js"></script>
     </head>
     <body class="p-20 bg-blue">
-        <h1>Library</h1>
+        <div class="flex justify-space-between align-center">
+            <h1>Library</h1>
+            <button id="new-book-button" class="new-book-button">New book</button>
+        </div>
+
+        <dialog 
+            id="new-book-modal" 
+            class="center-window window-half-width border-radius bg-brown p-20"
+        >
+            <form id="new-book-form" class="h-100 flex flex-col gap-10">
+                <h2>Add new book</h2>
+
+                <div class="form-grid p-10">
+                    <label class="text-light-green">Title: </label>
+                    <input 
+                        type="text" 
+                        id="title-input"
+                        name="titleInput"
+                        required>
+                    
+                    <label class="text-light-green">Author: </label>
+                    <input 
+                        type="text" 
+                        id="author-input"
+                        name="authorInput"
+                        required>
+                
+                    <label class="text-light-green">Pages: </label>
+                    <input 
+                        type="number" 
+                        id="pages-input"
+                        name="pagesInput"
+                        required>
+
+                    <label class="text-light-green">Read: </label>
+                    <input 
+                        type="checkbox" 
+                        id="read-input"
+                        name="readInput"
+                        class="bigger-text self-center">
+                    
+                </div>
+                <div class="mtop-auto self-end">
+                    <button id="cancel-button" class="form-button">Cancel</button>
+                    <button 
+                        type="submit" 
+                        id="add-new-book-button"
+                        class="form-button"
+                    >
+                        Add new book
+                    </button>
+                </div>
+            </form>
+        </dialog>
         
-        <div id="library" class="library-grid gap-10 bg-brown p-10">
-            
+        <div id="library" class="library-grid gap-10 bg-brown p-10 mtop-8"> 
         </div>
     </body>
 </html>

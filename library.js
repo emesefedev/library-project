@@ -7,11 +7,29 @@ function Book(title, author, pages, read) {
   this.pages = pages
   this.read = read
 
-  this.id = id++
+  this.id = id
+  id++
+}
+
+function addNewBookFromForm(titleInput, authorInput, pagesInput, readInput) {
+  const title = titleInput.value
+  const author = authorInput.value
+  const pages = pagesInput.value
+  const read = readInput.checked
+
+  const newBook = new Book(title, author, pages, read)
+  addBookToLibrary(newBook)
+  console.log(books)
+}
+
+function clearForm(form) {
+  form.reset()
 }
 
 function addBookToLibrary(newBook) {
   books[newBook.id] = newBook
+
+  updateLibrary()
 }
 
 function deleteBookFromLibrary(bookId) {
@@ -108,6 +126,37 @@ function updateLibrary() {
 }
 
 window.addEventListener("load", () => {
+  const library = document.getElementById("library")
+  const newBookButton = document.getElementById("new-book-button")
+  const newBookModal = document.getElementById("new-book-modal")
+
+  const newBookForm = document.getElementById("new-book-form")
+
+  const addNewBookButton = document.getElementById("add-new-book-button")
+  const cancelButton = document.getElementById("cancel-button")
+
+  const titleInput = document.getElementById("title-input")
+  const authorInput = document.getElementById("author-input")
+  const pagesInput = document.getElementById("pages-input")
+  const readInput = document.getElementById("read-input")
+
+  newBookButton.addEventListener("click", () => {
+    clearForm(newBookForm)
+    newBookModal.showModal()
+  })
+
+  addNewBookButton.addEventListener("click", (event) => {
+    event.preventDefault()
+    newBookModal.close()
+    addNewBookFromForm(titleInput, authorInput, pagesInput, readInput)
+  });
+
+  cancelButton.addEventListener("click", (event) => {
+    event.preventDefault()
+    newBookModal.close()
+  })
+
+
   book1 = new Book("Los siete maridos de Evelyn Hugo", "Taylor Jenkins Reid", 384, true)
   book2 = new Book("Entre silencios", "Camila Silva", 276, true)
   book3 = new Book("Running Close to the Wind", "Alexandra Rowland", 448, false)
@@ -115,10 +164,6 @@ window.addEventListener("load", () => {
   addBookToLibrary(book1)
   addBookToLibrary(book2)
   addBookToLibrary(book3)
-
-  const library = document.querySelector("#library")
-  updateLibrary()
-  
 })
 
 

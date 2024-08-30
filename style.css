@@ -14,10 +14,34 @@
     font-family: "Roboto", sans-serif;
 }
 
+dialog {
+    border: 1px solid var(--dark-green);
+}
+
 h1 {
     color: var(--dark-green);
     font-size: 3em;
-    margin-bottom: 8px;
+}
+
+h2 {
+    color: var(--dark-green);
+    font-size: 2em;
+}
+
+input[type="text"] {
+    appearance: none;
+    border: 2px solid var(--light-green);
+    border-radius: 5px;
+    height: 1.5em;
+    color: var(--dark-green);
+}
+
+input[type="number"] {
+    appearance: none;
+    border: 2px solid var(--light-green);
+    border-radius: 5px;
+    height: 1.5em;
+    color: var(--dark-green);
 }
 
 input[type="checkbox"] {
@@ -32,8 +56,8 @@ input[type="checkbox"] {
 
 input[type="checkbox"]::before {
     content: "✔";
+    color: var(--green);
     position: absolute;
-    font-size: 1em;
     right: -1px;
     top: -0.3em;
     visibility: hidden;
@@ -43,10 +67,42 @@ input[type="checkbox"]:checked::before {
     visibility: visible;
 }
 
+.border-radius {
+    border-radius: 10px;
+}
+
+/* MODAL */
+::backdrop {
+    background-image: linear-gradient(
+        45deg,
+        var(--brown),
+        var(--dark-green),
+        var(--green),
+        var(--light-green),
+        var(--blue)
+    );
+    opacity: 0.75;
+}
+
+.center-window {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
 /* TEXT */
+
+.bigger-text {
+    font-size: 1.25em;
+}
 
 .text-dark-green {
     color: var(--dark-green);
+}
+
+.text-light-green {
+    color: var(--light-green);
 }
 
 /* BACKGROUND */
@@ -69,6 +125,16 @@ input[type="checkbox"]:checked::before {
 
     border-radius: 10px;
 }
+
+.form-grid {
+    display: grid;
+    overflow: auto;
+    grid-template-rows: repeat(1fr, 4);
+    grid-template-columns: 1fr 3fr;
+    row-gap: 10px;
+}
+
+/* BOOK CARD */
   
 .book-card {
     background-color: var(--dark-green);
@@ -110,14 +176,61 @@ input[type="checkbox"]:checked::before {
     border: 1px solid var(--brown);
 }
 
+/* NEW BOOK */
+
+.new-book-button {
+    background-color: transparent;
+    color: var(--dark-green);
+    border: 1px solid var(--dark-green);
+    border-radius: 5px;
+    height: 1.75em;
+    align-self: end;
+}
+
+.new-book-button:hover {
+    color: var(--brown);
+    border: 1px solid var(--brown);
+}
+
+.form-button {
+    background-color: transparent;
+    color: var(--light-green);
+    border: 1px solid var(--light-green);
+    border-radius: 5px;
+    height: 1.75em;
+}
+
+.form-button:hover {
+    color: var(--green);
+    border: 1px solid var(--green);
+}
+
 /* FLEX */
 
 .flex {
     display: flex;
 }
 
+.flex-col {
+    flex-direction: column;
+}
+
+/* ALIGNMENT */
+
 .align-center {
     align-items: center;
+}
+
+.self-center {
+    align-self: center;
+}
+
+.self-end {
+    align-self: end;
+}
+
+.justify-space-between {
+    justify-content: space-between;
 }
 
 /* GAP */
@@ -136,12 +249,28 @@ input[type="checkbox"]:checked::before {
     padding: 20px;
 }
 
+/* MARGIN */
+
+.mtop-8 {
+    margin-top: 8px;
+}
+
+.mtop-auto {
+    margin-top: auto;
+}
+
 /* WIDHT */
+
+.window-half-width {
+    width: 50vw;
+}
+
 .window-width {
     width: 100vw;
 }
 
 /* HEIGHT */
-.h-500 {
-    height: 500px;
+
+.h-100 {
+    height: 300px;
 }
