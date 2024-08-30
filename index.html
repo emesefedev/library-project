@@ -16,25 +16,33 @@
             id="new-book-modal" 
             class="center-window window-half-width border-radius bg-brown p-20"
         >
-            <form class="h-100">
+            <form class="h-100 flex flex-col gap-10">
+                <h2>Add new book</h2>
+
                 <div class="form-grid p-10">
                     <label class="text-light-green">Title: </label>
-                    <input type="text">
+                    <input type="text" required>
                     
                     <label class="text-light-green">Author: </label>
-                    <input type="text">
+                    <input type="text" required>
                 
                     
                     <label class="text-light-green">Pages: </label>
-                    <input type="number">
+                    <input type="number" required>
 
                     <label class="text-light-green">Read: </label>
-                    <input type="checkbox">
+                    <input type="checkbox" class="bigger-text self-center">
                     
                 </div>
-                <div>
-                    <button value="cancel" formmethod="dialog">Cancel</button>
-                    <button id="confirmBtn" value="default">Confirm</button>
+                <div class="mtop-auto self-end">
+                    <button id="cancel-button" class="form-button">Cancel</button>
+                    <button 
+                        type="submit" 
+                        id="add-new-book-button"
+                        class="form-button"
+                    >
+                        Add new book
+                    </button>
                 </div>
             </form>
         </dialog>

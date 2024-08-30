@@ -23,6 +23,11 @@ h1 {
     font-size: 3em;
 }
 
+h2 {
+    color: var(--dark-green);
+    font-size: 2em;
+}
+
 input[type="text"] {
     appearance: none;
     border: 2px solid var(--light-green);
@@ -53,7 +58,6 @@ input[type="checkbox"]::before {
     content: "✔";
     color: var(--green);
     position: absolute;
-    font-size: 1em;
     right: -1px;
     top: -0.3em;
     visibility: hidden;
@@ -88,6 +92,10 @@ input[type="checkbox"]:checked::before {
 }
 
 /* TEXT */
+
+.bigger-text {
+    font-size: 1.25em;
+}
 
 .text-dark-green {
     color: var(--dark-green);
@@ -184,14 +192,41 @@ input[type="checkbox"]:checked::before {
     border: 1px solid var(--brown);
 }
 
+.form-button {
+    background-color: transparent;
+    color: var(--light-green);
+    border: 1px solid var(--light-green);
+    border-radius: 5px;
+    height: 1.75em;
+}
+
+.form-button:hover {
+    color: var(--green);
+    border: 1px solid var(--green);
+}
+
 /* FLEX */
 
 .flex {
     display: flex;
 }
 
+.flex-col {
+    flex-direction: column;
+}
+
+/* ALIGNMENT */
+
 .align-center {
     align-items: center;
+}
+
+.self-center {
+    align-self: center;
+}
+
+.self-end {
+    align-self: end;
 }
 
 .justify-space-between {
@@ -218,6 +253,10 @@ input[type="checkbox"]:checked::before {
 
 .mtop-8 {
     margin-top: 8px;
+}
+
+.mtop-auto {
+    margin-top: auto;
 }
 
 /* WIDHT */

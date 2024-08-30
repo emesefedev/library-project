@@ -111,9 +111,14 @@ window.addEventListener("load", () => {
   const library = document.querySelector("library")
   const newBookButton = document.getElementById("new-book-button");
   const newBookModal = document.getElementById("new-book-modal");
+  const cancelButton = document.getElementById("cancel-button");
 
   newBookButton.addEventListener("click", () => {
     newBookModal.showModal();
+  });
+
+  cancelButton.addEventListener("click", () => {
+    newBookModal.close();
   });
 
 
