@@ -12,13 +12,25 @@
             <button id="new-book-button" class="new-book-button">New book</button>
         </div>
 
-        <dialog id="new-book-modal" class="center-window">
-            <form>
-                <div>
-                    <label>
-                    Favorite animal:
+        <dialog 
+            id="new-book-modal" 
+            class="center-window window-half-width border-radius bg-brown p-20"
+        >
+            <form class="h-100">
+                <div class="form-grid p-10">
+                    <label class="text-light-green">Title: </label>
                     <input type="text">
-                    </label>
+                    
+                    <label class="text-light-green">Author: </label>
+                    <input type="text">
+                
+                    
+                    <label class="text-light-green">Pages: </label>
+                    <input type="number">
+
+                    <label class="text-light-green">Read: </label>
+                    <input type="checkbox">
+                    
                 </div>
                 <div>
                     <button value="cancel" formmethod="dialog">Cancel</button>

@@ -14,9 +14,29 @@
     font-family: "Roboto", sans-serif;
 }
 
+dialog {
+    border: 1px solid var(--dark-green);
+}
+
 h1 {
     color: var(--dark-green);
     font-size: 3em;
+}
+
+input[type="text"] {
+    appearance: none;
+    border: 2px solid var(--light-green);
+    border-radius: 5px;
+    height: 1.5em;
+    color: var(--dark-green);
+}
+
+input[type="number"] {
+    appearance: none;
+    border: 2px solid var(--light-green);
+    border-radius: 5px;
+    height: 1.5em;
+    color: var(--dark-green);
 }
 
 input[type="checkbox"] {
@@ -43,6 +63,10 @@ input[type="checkbox"]:checked::before {
     visibility: visible;
 }
 
+.border-radius {
+    border-radius: 10px;
+}
+
 /* MODAL */
 ::backdrop {
     background-image: linear-gradient(
@@ -63,13 +87,14 @@ input[type="checkbox"]:checked::before {
     transform: translate(-50%, -50%);
 }
 
-
-  
-
 /* TEXT */
 
 .text-dark-green {
     color: var(--dark-green);
+}
+
+.text-light-green {
+    color: var(--light-green);
 }
 
 /* BACKGROUND */
@@ -91,6 +116,14 @@ input[type="checkbox"]:checked::before {
     grid-auto-rows: 1fr;
 
     border-radius: 10px;
+}
+
+.form-grid {
+    display: grid;
+    overflow: auto;
+    grid-template-rows: repeat(1fr, 4);
+    grid-template-columns: 1fr 3fr;
+    row-gap: 10px;
 }
 
 /* BOOK CARD */
@@ -188,6 +221,17 @@ input[type="checkbox"]:checked::before {
 }
 
 /* WIDHT */
+
+.window-half-width {
+    width: 50vw;
+}
+
 .window-width {
     width: 100vw;
+}
+
+/* HEIGHT */
+
+.h-100 {
+    height: 300px;
 }
