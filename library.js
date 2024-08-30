@@ -1,4 +1,3 @@
-const books = {};
 const _books = new Map()
 let id = 1;
 
@@ -6,15 +5,9 @@ const library = () => document.getElementById("library")
 const newBookButton = () => document.getElementById("new-book-button")
 const newBookModal = () => document.getElementById("new-book-modal")
 
-const newBookForm = () => document.getElementById("new-book-form")
+const newBookForm = () => document.forms[0]
 
-const addNewBookButton = () => document.getElementById("add-new-book-button")
 const cancelButton = () => document.getElementById("cancel-button")
-
-const titleInput = () => document.getElementById("title-input")
-const authorInput = () => document.getElementById("author-input")
-const pagesInput = () => document.getElementById("pages-input")
-const readInput = () => document.getElementById("read-input")
 
 class Book {
   constructor (title, author, pages, read = false)  {
@@ -27,17 +20,9 @@ class Book {
   }
 }
 
-function addNewBookFromForm() {
-
-  // TODO: gestionar amb formData i onSubmit event for <form>
-  const title = titleInput().value 
-  const author = authorInput().value
-  const pages = pagesInput().valueAsNumber
-  const read = readInput().checked
-
-  const newBook = new Book(title, author, pages, read)
+function createNewBookFromForm(bookInfo) {
+  const newBook = new Book(bookInfo.title, bookInfo.author, bookInfo.pages, bookInfo.read)
   addBookToLibrary(newBook)
-  console.log(books)
 }
 
 function clearForm(form) {
@@ -45,15 +30,13 @@ function clearForm(form) {
 }
 
 function addBookToLibrary(newBook) {
-  books[newBook.id] = newBook
-  //TODO: fer que funcioni _books.set(newBook.id, newBook)
+  _books.set(newBook.id, newBook)
 
   rerenderLibrary()
 }
 
 function deleteBookFromLibrary(bookId) {
-  delete books[bookId]
-  //TODO: Map api
+  _books.delete(bookId)
 
 
   rerenderLibrary()
@@ -134,7 +117,7 @@ function cleanLibrary() {
 function rerenderLibrary() {
   cleanLibrary()
 
-  for (const [id, book] of Object.entries(books)) {
+  for (const [id, book] of _books) { 
     renderBook(book)
   }
 
@@ -146,8 +129,6 @@ function rerenderLibrary() {
   }
 }
 
-
-
 window.addEventListener("load", () => {
 
   newBookButton().addEventListener("click", () => {
@@ -155,16 +136,27 @@ window.addEventListener("load", () => {
     newBookModal().showModal()
   })
 
-  addNewBookButton().addEventListener("click", (event) => {
+  newBookForm().addEventListener('submit', (event) => {
+    
     event.preventDefault()
+    event.stopPropagation()
     newBookModal().close()
-    addNewBookFromForm()
-  });
+
+    let formData = new FormData(event.target)
+    
+    let bookInfo = {
+        title: formData.get("titleInput").toString(),
+        author: formData.get("authorInput").toString(),
+        pages: formData.get("pagesInput"),
+        read: formData.get("readInput") 
+    }
+    
+    createNewBookFromForm(bookInfo)
+})
 
   cancelButton().addEventListener("click", (event) => {
     newBookModal().close()
   })
-
 
   book1 = new Book("Los siete maridos de Evelyn Hugo", "Taylor Jenkins Reid", 384, true)
   book2 = new Book("Entre silencios", "Camila Silva", 276, true)
@@ -174,5 +166,3 @@ window.addEventListener("load", () => {
   addBookToLibrary(book2)
   addBookToLibrary(book3)
 })
-
-
