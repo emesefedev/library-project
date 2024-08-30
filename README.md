@@ -10,4 +10,4 @@
 
 📝 [Assignment](https://www.theodinproject.com/lessons/node-path-javascript-library)
 
-🐝 Result in progress...
+📚 [Result](https://emesefedev.github.io/library-project/)
